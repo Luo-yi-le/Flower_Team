@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+         http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-4.3.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+    <!-- 自动扫描包，实现支持注解的IOC -->
+    <context:component-scan base-package="com.nf511.flower_team" />
+    <!-- Spring MVC不处理静态资源 -->
+    <mvc:default-servlet-handler />
+    <!-- 支持mvc注解驱动 -->
+    <mvc:annotation-driven enable-matrix-variables="true" />
+    <!-- 配置映射媒体类型的策略 -->
+    <bean
+            class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping">
+        <property name="removeSemicolonContent" value="false" />
+    </bean>
+    <!-- 内部视图解析器，JSP与JSTL模板 -->
+    <bean
+            class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+            id="internalResourceViewResolver">
+        <!--指定视图渲染类 -->
+        <property name="viewClass"
+                  value="org.springframework.web.servlet.view.JstlView" />
+        <!--自动添加到路径中的前缀 -->
+        <property name="prefix" value="/WEB-INF/vies/" />
+        <!--自动添加到路径中的后缀 -->
+        <property name="suffix" value=".jsp" />
+        <!--设置所有视图的内容类型，如果视图本身设置内容类型视图类可以忽略 -->
+        <property name="contentType" value="text/html;charset=UTF-8" />
+        <!-- 优先级，越小越前 -->
+        <property name="order" value="1" />
+    </bean>
+    <!-- <bean id="advices" class="com.luoyile.resourcessys.util.SpringAop.Advices"></bean>-->
+    <bean id="advices" class="com.nf511.flower_team.util.SpringAop.Advices"></bean>
+    <!-- AOP配置 -->
+    <!-- proxy-target-class属性表示被代理的类是否为一个没有实现接口的类，Spring会依据实现了接口则使用JDK内置的动态代理，如果未实现接口则使用cglib -->
+    <aop:config proxy-target-class="true">
+        <!-- 切面配置 -->
+        <!--ref表示通知对象的引用 -->
+        <aop:aspect ref="advices">
+            <!-- 配置切入点(横切逻辑将注入的精确位置) -->
+            <aop:pointcut expression="execution(public * com.nf511.flower_team.service..*(..))" id="pointcut1"/>
+            <!--指明多个切入点······· -->
+            <aop:pointcut id="" expression=""></aop:pointcut>
+            <aop:pointcut id="" expression=""></aop:pointcut>
+            <aop:pointcut id="" expression=""></aop:pointcut>
+
+            <!--声明通知，method指定通知类型，pointcut指定切点，就是该通知应该注入那些方法中 -->
+            <aop:before method="beforeMethod" pointcut-ref="pointcut1"></aop:before>
+            <aop:after method="afterMethod" pointcut-ref="pointcut1"></aop:after>
+            <!--  <aop:around method="aroundMethod" pointcut="execution(public * Entities..*.sing*(..))" pointcut-ref="pointcut1"/>-->
+            <aop:around method="aroundMethod" pointcut-ref="pointcut1"/>
+            <aop:after-throwing method="afterThrowing" pointcut-ref="pointcut1" throwing="ex"/>
+            <aop:after-returning method="afterReturning" pointcut-ref="pointcut1" returning="result"/>
+        </aop:aspect>
+    </aop:config>
+    <!-- 配置注解驱动 可以将request参数与绑定到controller参数上 -->
+    <mvc:annotation-driven>
+        <mvc:message-converters register-defaults="true">
+            <bean class="org.springframework.http.converter.StringHttpMessageConverter">
+                <constructor-arg value="UTF-8"/>
+            </bean>
+            <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+                <property name="objectMapper">
+                    <bean class="org.springframework.http.converter.json.Jackson2ObjectMapperFactoryBean">
+                        <property name="failOnEmptyBeans" value="false"/>
+                    </bean>
+                </property>
+            </bean>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
+    <!--跨域请求-->
+    <mvc:cors>
+        <mvc:mapping path="/**"
+                     allowed-origins="*"
+                     allowed-methods="POST,GET,OPTIONS,DELETE,PUT"
+                     allowed-headers="Content-Type,ContentType,Access-Control-Allow-Headers,Authorization, X-Requested-Wit,Access-Control-Allow-Origin"
+                     allow-credentials="true"/>
+    </mvc:cors>
+    <!--文件上传解析器 -->
+    <!-- springmvc文件上传需要配置的节点-->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="maxUploadSize" value="20971500"/>
+        <property name="defaultEncoding" value="UTF-8"/>
+        <property name="resolveLazily" value="true"/>
+    </bean>
+    <!--拦截器-->
+    <!--配置拦截器 拦截除了exceptUrls内的所有请求-->
+</beans>

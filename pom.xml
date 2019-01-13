@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.nf511.flower_team</groupId>
+    <artifactId>Flower_Team</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>dao</module>
+        <module>entity</module>
+        <module>common</module>
+        <module>service</module>
+        <module>webui</module>
+    </modules>
+
+    <properties>
+
+        <!--项目内模块-->
+        <common.version>1.0-SNAPSHOT</common.version>
+        <entity.version>1.0-SNAPSHOT</entity.version>
+        <dao.version>1.0-SNAPSHOT</dao.version>
+        <service.version>1.0-SNAPSHOT</service.version>
+        <webui.version>1.0-SNAPSHOT</webui.version>
+        <jackson.version>2.7.4</jackson.version>
+        <commons-lang3.version>3.4</commons-lang3.version>
+
+        <!--通用部分-->
+        <log4j.version>2.6.1</log4j.version>
+        <junit.version>4.10</junit.version>
+        <!--Spring-->
+        <spring.version>4.3.0.RELEASE</spring.version>
+        <aspectjweaver.version>1.8.9</aspectjweaver.version>
+        <cglib.version>3.2.4</cglib.version>
+
+        <!--mybatis-->
+        <mybatis-spring.version>1.3.0</mybatis-spring.version>
+        <mysql-connector-java.version>5.1.38</mysql-connector-java.version>
+        <mybatis.version>3.4.1</mybatis.version>
+        <c3p0.version>0.9.1.2</c3p0.version>
+
+        <!--spring mvc-->
+        <jstl.version>1.2</jstl.version>
+        <servlet-api.version>3.0.1</servlet-api.version>
+        <jsp-api.version>2.1</jsp-api.version>
+        <hibernate.version>5.2.2.Final</hibernate.version>
+        <commons-io.version>2.4</commons-io.version>
+        <commons-fileupload.version>1.3.1</commons-fileupload.version>
+        <freemarker.version>2.3.23</freemarker.version>
+
+        <!--EXCEL-->
+        <poi-ooxml.version>3.17</poi-ooxml.version>
+        <commons-logging.version>1.2</commons-logging.version>
+        <fastjson.version>1.1.37</fastjson.version>
+
+        <slf4j.version>1.7.25</slf4j.version>
+
+    </properties>
+    <dependencyManagement>
+        <dependencies>
+            <!--项目内的依赖-->
+            <dependency>
+                <groupId>com.nf511.flower_team</groupId>
+                <artifactId>common</artifactId>
+                <version>${common.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.nf511.flower_team</groupId>
+                <artifactId>entity</artifactId>
+                <version>${entity.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.nf511.flower_team</groupId>
+                <artifactId>dao</artifactId>
+                <version>${dao.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.nf511.flower_team</groupId>
+                <artifactId>service</artifactId>
+                <version>${service.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.nf511.flower_team</groupId>
+                <artifactId>webui</artifactId>
+                <version>${webui.version}</version>
+            </dependency>
+
+            <!--common模块-->
+            <!--jackson-->
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-core</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-annotations</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+            <!--apache-commons-->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${commons-lang3.version}</version>
+            </dependency>
+
+            <!--log4j日志包 -->
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-core</artifactId>
+                <version>${log4j.version}</version>
+            </dependency>
+            <!-- JUnit单元测试工具 -->
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit.version}</version>
+            </dependency>
+            <!--Spring框架核心库 -->
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-context</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <!-- aspectJ AOP 织入器 -->
+            <dependency>
+                <groupId>org.aspectj</groupId>
+                <artifactId>aspectjweaver</artifactId>
+                <version>${aspectjweaver.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cglib</groupId>
+                <artifactId>cglib</artifactId>
+                <version>${cglib.version}</version>
+            </dependency>
+
+            <!--mybatis-spring适配器 -->
+            <dependency>
+                <groupId>org.mybatis</groupId>
+                <artifactId>mybatis-spring</artifactId>
+                <version>${mybatis-spring.version}</version>
+            </dependency>
+            <!--Spring java数据库访问包，在本例中主要用于提供数据源 -->
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-jdbc</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <!--mysql数据库驱动 -->
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql-connector-java.version}</version>
+            </dependency>
+            <!-- mybatis ORM框架 -->
+            <dependency>
+                <groupId>org.mybatis</groupId>
+                <artifactId>mybatis</artifactId>
+                <version>${mybatis.version}</version>
+            </dependency>
+            <!--c3p0 连接池 -->
+            <dependency>
+                <groupId>c3p0</groupId>
+                <artifactId>c3p0</artifactId>
+                <version>${c3p0.version}</version>
+            </dependency>
+
+
+            <!-- Spring MVC -->
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-webmvc</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-context-support</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <!-- JSTL -->
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>jstl</artifactId>
+                <version>${jstl.version}</version>
+            </dependency>
+            <!-- Servlet核心包 -->
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>javax.servlet-api</artifactId>
+                <version>${servlet-api.version}</version>
+            </dependency>
+            <!--JSP -->
+            <dependency>
+                <groupId>javax.servlet.jsp</groupId>
+                <artifactId>jsp-api</artifactId>
+                <version>${jsp-api.version}</version>
+            </dependency>
+            <!--JSR303 -->
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-validator</artifactId>
+                <version>${hibernate.version}</version>
+            </dependency>
+            <!--文件上传 -->
+            <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>${commons-io.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-fileupload</groupId>
+                <artifactId>commons-fileupload</artifactId>
+                <version>${commons-fileupload.version}</version>
+            </dependency>
+            <!-- FreeMarker -->
+            <dependency>
+                <groupId>org.freemarker</groupId>
+                <artifactId>freemarker</artifactId>
+                <version>${freemarker.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.poi</groupId>
+                <artifactId>poi-ooxml</artifactId>
+                <version>${poi-ooxml.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-logging</groupId>
+                <artifactId>commons-logging</artifactId>
+                <version>${commons-logging.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${fastjson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-log4j12</artifactId>
+                <version>1.7.25</version>
+            </dependency>
+
+        </dependencies>
+
+    </dependencyManagement>
+
+</project>
