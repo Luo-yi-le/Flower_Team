@@ -11,32 +11,32 @@ import java.util.List;
 @Service
 public class FlowerBranchNumberImpl implements FlowerBranchNumberService {
     @Autowired
-    FlowerBranchNumberDao flowerBranchNumberDao;
+    FlowerBranchNumberDao f;
     public List<FlowerBranchNumber> selectAllFlowerBranchNumber() {
-        return flowerBranchNumberDao.selectAllFlowerBranchNumber();
+        return f.selectAllFlowerBranchNumber();
     }
 
     public FlowerBranchNumber selectAllFlowerBranchNumberId(String flowerBranchNumberId) {
-        return flowerBranchNumberDao.selectAllFlowerBranchNumberId(flowerBranchNumberId);
+        return f.selectAllFlowerBranchNumberId(flowerBranchNumberId);
     }
 
     public List<FlowerBranchNumber> selectAllFlowerBranchNumberByPage(int pagelimit, int size) {
-        return flowerBranchNumberDao.selectAllFlowerBranchNumberByPage(pagelimit, size);
+        return f.selectAllFlowerBranchNumberByPage(pagelimit, size);
     }
 
     public int insertFlowerBranchNumber(FlowerBranchNumber flowerBranchNumber) {
-        return flowerBranchNumberDao.insertFlowerBranchNumber(flowerBranchNumber);
+        return f.insertFlowerBranchNumber(flowerBranchNumber);
     }
 
     public int updateFlowerBranchNumber(FlowerBranchNumber flowerBranchNumber) {
-        return flowerBranchNumberDao.updateFlowerBranchNumber(flowerBranchNumber);
+        return f.updateFlowerBranchNumber(flowerBranchNumber);
     }
 
     public int deleteFlowerBranchNumber(int flowerBranchNumberId) {
-        return flowerBranchNumberDao.deleteFlowerBranchNumber(flowerBranchNumberId);
+        return f.deleteFlowerBranchNumber(flowerBranchNumberId);
     }
 
     public int deleteAll(List<Integer> items) {
-        return flowerBranchNumberDao.deleteAll(items);
+        return f.deleteAll(items);
     }
 }
