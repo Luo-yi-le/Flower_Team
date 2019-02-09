@@ -1,4 +1,4 @@
-package com.nf511.flower_team.entity;
+package com.sample;
 
 
 public class Flower {
@@ -7,12 +7,17 @@ public class Flower {
   private long flowerTypeId;
   private long flowerUseId;
   private long flowerBranchNumberId;
-  private double marketPrice;
-  private double price;
-  private long inventory;
-  private String imageName;
+  private double flowerMarketPrice;
+  private double flowerPrice;
+  private long flowerInventory;
+  private String flowerImageName;
   private String flowerName;
-  private java.sql.Timestamp insertDateTime;
+  private java.sql.Timestamp flowerDateTime;
+  private String flowerMaterials;
+  private String flowerPackaging;
+  private String flowerLanguage;
+  private String flowerIntroduce;
+  private long stateId;
 
 
   public long getFlowerId() {
@@ -51,39 +56,39 @@ public class Flower {
   }
 
 
-  public double getMarketPrice() {
-    return marketPrice;
+  public double getFlowerMarketPrice() {
+    return flowerMarketPrice;
   }
 
-  public void setMarketPrice(double marketPrice) {
-    this.marketPrice = marketPrice;
-  }
-
-
-  public double getPrice() {
-    return price;
-  }
-
-  public void setPrice(double price) {
-    this.price = price;
+  public void setFlowerMarketPrice(double flowerMarketPrice) {
+    this.flowerMarketPrice = flowerMarketPrice;
   }
 
 
-  public long getInventory() {
-    return inventory;
+  public double getFlowerPrice() {
+    return flowerPrice;
   }
 
-  public void setInventory(long inventory) {
-    this.inventory = inventory;
+  public void setFlowerPrice(double flowerPrice) {
+    this.flowerPrice = flowerPrice;
   }
 
 
-  public String getImageName() {
-    return imageName;
+  public long getFlowerInventory() {
+    return flowerInventory;
   }
 
-  public void setImageName(String imageName) {
-    this.imageName = imageName;
+  public void setFlowerInventory(long flowerInventory) {
+    this.flowerInventory = flowerInventory;
+  }
+
+
+  public String getFlowerImageName() {
+    return flowerImageName;
+  }
+
+  public void setFlowerImageName(String flowerImageName) {
+    this.flowerImageName = flowerImageName;
   }
 
 
@@ -96,12 +101,57 @@ public class Flower {
   }
 
 
-  public java.sql.Timestamp getInsertDateTime() {
-    return insertDateTime;
+  public java.sql.Timestamp getFlowerDateTime() {
+    return flowerDateTime;
   }
 
-  public void setInsertDateTime(java.sql.Timestamp insertDateTime) {
-    this.insertDateTime = insertDateTime;
+  public void setFlowerDateTime(java.sql.Timestamp flowerDateTime) {
+    this.flowerDateTime = flowerDateTime;
+  }
+
+
+  public String getFlowerMaterials() {
+    return flowerMaterials;
+  }
+
+  public void setFlowerMaterials(String flowerMaterials) {
+    this.flowerMaterials = flowerMaterials;
+  }
+
+
+  public String getFlowerPackaging() {
+    return flowerPackaging;
+  }
+
+  public void setFlowerPackaging(String flowerPackaging) {
+    this.flowerPackaging = flowerPackaging;
+  }
+
+
+  public String getFlowerLanguage() {
+    return flowerLanguage;
+  }
+
+  public void setFlowerLanguage(String flowerLanguage) {
+    this.flowerLanguage = flowerLanguage;
+  }
+
+
+  public String getFlowerIntroduce() {
+    return flowerIntroduce;
+  }
+
+  public void setFlowerIntroduce(String flowerIntroduce) {
+    this.flowerIntroduce = flowerIntroduce;
+  }
+
+
+  public long getStateId() {
+    return stateId;
+  }
+
+  public void setStateId(long stateId) {
+    this.stateId = stateId;
   }
 
   @Override
@@ -111,12 +161,17 @@ public class Flower {
             ", flowerTypeId=" + flowerTypeId +
             ", flowerUseId=" + flowerUseId +
             ", flowerBranchNumberId=" + flowerBranchNumberId +
-            ", marketPrice=" + marketPrice +
-            ", price=" + price +
-            ", inventory=" + inventory +
-            ", imageName='" + imageName + '\'' +
+            ", flowerMarketPrice=" + flowerMarketPrice +
+            ", flowerPrice=" + flowerPrice +
+            ", flowerInventory=" + flowerInventory +
+            ", flowerImageName='" + flowerImageName + '\'' +
             ", flowerName='" + flowerName + '\'' +
-            ", insertDateTime=" + insertDateTime +
+            ", flowerDateTime=" + flowerDateTime +
+            ", flowerMaterials='" + flowerMaterials + '\'' +
+            ", flowerPackaging='" + flowerPackaging + '\'' +
+            ", flowerLanguage='" + flowerLanguage + '\'' +
+            ", flowerIntroduce='" + flowerIntroduce + '\'' +
+            ", stateId=" + stateId +
             '}';
   }
 }

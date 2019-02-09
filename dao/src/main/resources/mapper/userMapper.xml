@@ -1,7 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!--命名空间应该是对应接口的包名+接口名 -->
-<mapper namespace="com.nf511.flower_team.dao"><!--.dao-->
+<mapper namespace="com.nf511.flower_team.dao.UserDao"><!--.dao-->
     <!--id应该是接口中的方法，结果类型如没有配置别名则应该使用全名称-->
 
+    <!--结果集-->
+    <resultMap id="allUser" type="User">
+        <id column="userId" property="userId"></id>
+        <result column="userPassword" property="userPassword"></result>
+        <result column="userSex" property="userSex"></result>
+        <result column="userName" property="userName"></result>
+        <result column="userMailbox" property="userMailbox"></result>
+        <result column="userPhone" property="userPhone"></result>
+        <result column="userAddress" property="userAddress"></result>
+        <result column="userHeadPortrait" property="userHeadPortrait"></result>
+        <result column="userBirthday" property="userBirthday"></result>
+    </resultMap>
+
+    <!--查询所有-->
+    <select id="selectAllUser" resultMap="allUser">
+      select  * from user
+    </select>
+    <!--查询id-->
+    <select id="selectUserId" resultMap="allUser">
+      select  * from user where userId=#{userId}
+    </select>
+    <!--登陆-->
+    <select id="userLogin" resultType="User">
+      select  * from user where userName=#{userName} and userPassword=#{userPassword}
+    </select>
+
+    <!--分页查询-->
+    <select id="selectAllUserByPage" resultMap="allUser">
+         select * from user limit #{pagelimit},#{size};
+    </select>
+
+    <!--删除-->
+    <delete id="deleteUser" parameterType="int">
+        delete from user where userId=#{userId};
+    </delete>
+
+    <!--批量删除-->
+    <delete id="deleteAll" parameterType="java.util.List">
+        delete from user
+        <where>
+            <if test="userId!=null and userId.size() gt 0">
+                userId in
+                <foreach collection="userIds" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+        </where>
+    </delete>
+
+    <!--添加-->
+    <insert id="insertUser" parameterType="User" useGeneratedKeys="true" keyProperty="userId">
+        insert into user(userPassword,userSex,userName,userMailbox,userPhone,userAddress,userHeadPortrait,userBirthday)
+        values (#{userPassword},#{userSex},#{userName},#{userMailbox},#{userPhone},#{userAddress},#{userHeadPortrait},#{userBirthday})
+    </insert>
+    <!--修改-->
+    <update id="updateUser" parameterType="User">
+      update user set stateName=#{stateName} where userId=#{userId}
+    </update>
 </mapper>

@@ -1,6 +1,4 @@
 package com.nf511.flower_team.entity;
-
-
 public class Floweruse {
 
   private long flowerUseId;

@@ -1,7 +1,6 @@
 package com.nf511.flower_team.entity;
 
-
-public class Flowerbranchnumber {
+public class FlowerBranchNumber {
 
   private long flowerBranchNumberId;
   private String flowerBranchNumber;
@@ -26,7 +25,7 @@ public class Flowerbranchnumber {
 
   @Override
   public String toString() {
-    return "Flowerbranchnumber{" +
+    return "FlowerBranchNumber{" +
             "flowerBranchNumberId=" + flowerBranchNumberId +
             ", flowerBranchNumber='" + flowerBranchNumber + '\'' +
             '}';

@@ -1,16 +1,16 @@
 package com.nf511.flower_team.entity;
 
-
 public class User {
 
   private long userId;
-  private String userAccount;
   private String userPassword;
+  private String userSex;
   private String userName;
   private String userMailbox;
   private String userPhone;
-  private String leaveAMessage;
+  private String userAddress;
   private String userHeadPortrait;
+  private java.sql.Date userBirthday;
 
 
   public long getUserId() {
@@ -22,21 +22,21 @@ public class User {
   }
 
 
-  public String getUserAccount() {
-    return userAccount;
-  }
-
-  public void setUserAccount(String userAccount) {
-    this.userAccount = userAccount;
-  }
-
-
   public String getUserPassword() {
     return userPassword;
   }
 
   public void setUserPassword(String userPassword) {
     this.userPassword = userPassword;
+  }
+
+
+  public String getUserSex() {
+    return userSex;
+  }
+
+  public void setUserSex(String userSex) {
+    this.userSex = userSex;
   }
 
 
@@ -67,12 +67,12 @@ public class User {
   }
 
 
-  public String getLeaveAMessage() {
-    return leaveAMessage;
+  public String getUserAddress() {
+    return userAddress;
   }
 
-  public void setLeaveAMessage(String leaveAMessage) {
-    this.leaveAMessage = leaveAMessage;
+  public void setUserAddress(String userAddress) {
+    this.userAddress = userAddress;
   }
 
 
@@ -84,17 +84,27 @@ public class User {
     this.userHeadPortrait = userHeadPortrait;
   }
 
+
+  public java.sql.Date getUserBirthday() {
+    return userBirthday;
+  }
+
+  public void setUserBirthday(java.sql.Date userBirthday) {
+    this.userBirthday = userBirthday;
+  }
+
   @Override
   public String toString() {
     return "User{" +
             "userId=" + userId +
-            ", userAccount='" + userAccount + '\'' +
             ", userPassword='" + userPassword + '\'' +
+            ", userSex='" + userSex + '\'' +
             ", userName='" + userName + '\'' +
             ", userMailbox='" + userMailbox + '\'' +
             ", userPhone='" + userPhone + '\'' +
-            ", leaveAMessage='" + leaveAMessage + '\'' +
+            ", userAddress='" + userAddress + '\'' +
             ", userHeadPortrait='" + userHeadPortrait + '\'' +
+            ", userBirthday=" + userBirthday +
             '}';
   }
 }

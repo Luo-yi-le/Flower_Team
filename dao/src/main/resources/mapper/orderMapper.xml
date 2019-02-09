@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--命名空间应该是对应接口的包名+接口名 -->
+<mapper namespace="com.nf511.flower_team.dao.OrderDao"><!--.dao-->
+    <!--id应该是接口中的方法，结果类型如没有配置别名则应该使用全名称-->
+    <resultMap id="allOrder" type="Order">
+        <id column="orderId" property="orderId"></id>
+        <result column="orderPrice" property="orderPrice"></result>
+        <result column="orderState" property="orderState"></result>
+        <result column="orderDate" property="orderDate"></result>
+        <result column="orderConsigneeName" property="orderConsigneeName"></result>
+        <result column="orderConsigneePhone" property="orderConsigneePhone"></result>
+        <result column="orderAddress" property="orderAddress"></result>
+        <result column="orderDetailedAddress" property="orderDetailedAddress"></result>
+        <result column="orderDeliveryTime" property="orderDeliveryTime"></result>
+        <result column="orderBuyerName" property="orderBuyerName"></result>
+        <result column="orderBuyerPhone" property="orderBuyerPhone"></result>
+        <result column="orderBuyerPhone" property="orderBuyerPhone"></result>
+        <result column="orderBuyerPhone" property="orderBuyerPhone"></result>
+    </resultMap>
+    <!--查询id-->
+    <select id="selectAllOrderId" resultMap="allOrder">
+      select  * from order where orderId=#{orderId}
+    </select>
+    <!--查询全部-->
+    <select id="selectAllOrder" resultMap="allOrder">
+         select * from order
+    </select>
+    <!--分页查询-->
+    <select id="selectAllOrderByPage" resultMap="allOrder">
+         select * from order limit #{pagelimit},#{size};
+    </select>
+
+    <!--删除-->
+    <delete id="deleteOrder" parameterType="int">
+        delete from order where orderId=#{orderId};
+    </delete>
+
+    <!--批量删除-->
+    <delete id="deleteAll" parameterType="java.util.List">
+        delete from order
+        <where>
+            <if test="orderId!=null and orderId.size() gt 0">
+                orderId in
+                <foreach collection="orderIds" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+        </where>
+    </delete>
+
+    <!--添加-->
+    <insert id="insertOrder" parameterType="Order" useGeneratedKeys="true" keyProperty="orderId">
+        insert into order(orderPrice,orderState,orderDate,orderConsigneeName,orderConsigneePhone,orderAddress,orderDetailedAddress,orderDeliveryTime,orderBuyerName,orderBuyerPhone,orderGreetingMessage,userId)
+        values (#{orderPrice},#{orderState},#{orderDate},#{orderConsigneeName},#{orderConsigneePhone},#{orderAddress},#{orderDetailedAddress},#{orderDeliveryTime},#{orderBuyerName},#{orderBuyerPhone},#{orderGreetingMessage},#{userId})
+    </insert>
+    <!--修改-->
+    <update id="updateOrder" parameterType="Order">
+      update order set orderPrice=#{orderPrice},orderState=#{orderState},orderDate=#{orderDate},orderConsigneeName=#{orderConsigneeName},orderConsigneePhone=#{orderConsigneePhone},orderAddress=#{orderAddress},orderDetailedAddress=#{orderDetailedAddress},orderDeliveryTime=#{orderDeliveryTime},orderBuyerName=#{orderBuyerName},orderBuyerPhone=#{orderBuyerPhone},orderGreetingMessage=#{orderGreetingMessage},userId=#{userId} where orderId=#{orderId}
+    </update>
+</mapper>

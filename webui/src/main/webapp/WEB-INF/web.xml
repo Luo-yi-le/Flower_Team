@@ -3,11 +3,9 @@
          xmlns="http://java.sun.com/xml/ns/javaee"
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
          id="WebApp_ID" version="3.0">
-
   <welcome-file-list>
     <welcome-file>login.html</welcome-file>
   </welcome-file-list>
-
   <listener>
     <description>Spring容器加载监听器</description>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
@@ -16,7 +14,6 @@
     <param-name>contextConfigLocation</param-name>
     <param-value>classpath*:applicationContext.xml</param-value>
   </context-param>
-
   <!--Spring MVC 前置Servlet，中心控制器 -->
   <servlet>
     <servlet-name>springmvc</servlet-name>
@@ -43,7 +40,6 @@
     <servlet-name>springmvc</servlet-name>
     <url-pattern>/</url-pattern>
   </servlet-mapping>
-
   <!--编码过滤器 -->
   <filter>
     <filter-name>characterEncodingFilter</filter-name>

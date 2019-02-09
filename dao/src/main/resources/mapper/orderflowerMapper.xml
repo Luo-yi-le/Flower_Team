@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--命名空间应该是对应接口的包名+接口名 -->
+<mapper namespace="com.nf511.flower_team.dao.OrderflowerDao"><!--.dao-->
+    <!--id应该是接口中的方法，结果类型如没有配置别名则应该使用全名称-->
+    <resultMap id="allOrderflower" type="Orderflower">
+        <id column="orderflowerId" property="orderflowerId"></id>
+        <result column="flowerId" property="flowerId"></result>
+        <result column="orderId" property="orderId"></result>
+        <result column="orderFlowerAmount" property="orderFlowerAmount"></result>
+    </resultMap>
+    <!--查询id-->
+    <select id="selectAllOrderflowerId" resultMap="allOrderflower">
+      select  * from orderflower where orderflowerId=#{orderflowerId}
+    </select>
+    <!--查询全部-->
+    <select id="selectAllOrderflower" resultMap="allOrderflower">
+         select * from orderflower
+    </select>
+    <!--分页查询-->
+    <select id="selectAllOrderflowerByPage" resultMap="allOrderflower">
+         select * from orderflower limit #{pagelimit},#{size};
+    </select>
+
+    <!--删除-->
+    <delete id="deleteOrderflower" parameterType="int">
+        delete from orderflower where orderflowerId=#{orderflowerId};
+    </delete>
+
+    <!--批量删除-->
+    <delete id="deleteAll" parameterType="java.util.List">
+        delete from orderflower
+        <where>
+            <if test="orderflowerId!=null and orderflowerId.size() gt 0">
+                orderflowerId in
+                <foreach collection="orderflowerIds" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+        </where>
+    </delete>
+
+    <!--添加-->
+    <insert id="insertOrderflower" parameterType="Orderflower" useGeneratedKeys="true" keyProperty="orderflowerId">
+        insert into orderflower(flowerId,orderId,orderFlowerAmount)
+        values (#{flowerId},#{orderId},#{orderFlowerAmount})
+    </insert>
+    <!--修改-->
+    <update id="updateOrderflower" parameterType="Orderflower">
+      update orderflower set flowerId=#{flowerId},orderId=#{orderId},orderFlowerAmount=#{orderFlowerAmount} where orderflowerId=#{orderflowerId}
+    </update>
+</mapper>

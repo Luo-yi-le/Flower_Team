@@ -12,11 +12,11 @@
     <artifactId>dao</artifactId>
     <dependencies>
         <dependency>
-            <groupId>com.luoyile.resourcessys</groupId>
+            <groupId>com.nf511.flower_team</groupId>
             <artifactId>common</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.luoyile.resourcessys</groupId>
+            <groupId>com.nf511.flower_team</groupId>
             <artifactId>entity</artifactId>
         </dependency>
 
