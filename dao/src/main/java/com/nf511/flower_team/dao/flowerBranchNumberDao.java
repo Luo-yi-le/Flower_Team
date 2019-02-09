@@ -5,7 +5,7 @@ import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
-public interface FlowerBranchNumberDao {
+public interface flowerBranchNumberDao {
     List<FlowerBranchNumber> selectAllFlowerBranchNumber();
     FlowerBranchNumber selectAllFlowerBranchNumberId(@Param("flowerBranchNumberId") String flowerBranchNumberId);
     List<FlowerBranchNumber>selectAllFlowerBranchNumberByPage(@Param("pagelimit")int pagelimit,@Param("size")int size);
