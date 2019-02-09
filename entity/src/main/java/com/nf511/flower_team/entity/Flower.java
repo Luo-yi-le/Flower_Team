@@ -1,4 +1,4 @@
-package com.sample;
+package com.nf511.flower_team.entity;
 
 
 public class Flower {

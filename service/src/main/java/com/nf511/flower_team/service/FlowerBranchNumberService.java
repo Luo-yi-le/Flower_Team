@@ -1,11 +1,11 @@
-package com.nf511.flower_team.dao;
+package com.nf511.flower_team.service;
 
 import com.nf511.flower_team.entity.FlowerBranchNumber;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
-public interface FlowerBranchNumberDao {
+public interface FlowerBranchNumberService {
     List<FlowerBranchNumber> selectAllFlowerBranchNumber();
     FlowerBranchNumber selectAllFlowerBranchNumberId(@Param("flowerBranchNumberId") String flowerBranchNumberId);
     List<FlowerBranchNumber>selectAllFlowerBranchNumberByPage(@Param("pagelimit")int pagelimit,@Param("size")int size);

@@ -1,11 +1,13 @@
-package com.nf511.flower_team.dao;
+package com.nf511.flower_team.service;
+
 
 import com.nf511.flower_team.entity.Address;
+import com.nf511.flower_team.entity.User;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
-public interface AddressDao {
+public interface AddressService {
     List<Address> selectAllAddress();
     Address selectAddressId(@Param("addressId") String addressId);
     List<Address>selectAllAddressByPage(@Param("pagelimit")int pagelimit,@Param("size")int size);

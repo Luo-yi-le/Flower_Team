@@ -16,7 +16,7 @@ Date: 2019-01-14 08:21:40
 SET FOREIGN_KEY_CHECKS=0;
 
 -- ----------------------------
--- Table structure for `AdminDao`
+-- Table structure for `AdminContrllor`
 -- ----------------------------
 DROP TABLE IF EXISTS `admin`;
 CREATE TABLE `admin` (
@@ -27,10 +27,10 @@ CREATE TABLE `admin` (
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Records of AdminDao
+-- Records of AdminContrllor
 -- ----------------------------
 INSERT INTO `admin` VALUES ('1', 'liuqi', 'liuqi');
-INSERT INTO `admin` VALUES ('2', 'AdminDao', 'AdminDao');
+INSERT INTO `admin` VALUES ('2', 'AdminContrllor', 'AdminContrllor');
 
 -- ----------------------------
 -- Table structure for `flower`

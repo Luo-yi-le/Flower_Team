@@ -36,7 +36,6 @@
         <!-- 优先级，越小越前 -->
         <property name="order" value="1" />
     </bean>
-    <!-- <bean id="advices" class="com.luoyile.resourcessys.util.SpringAop.Advices"></bean>-->
     <bean id="advices" class="com.nf511.flower_team.util.SpringAop.Advices"></bean>
     <!-- AOP配置 -->
     <!-- proxy-target-class属性表示被代理的类是否为一个没有实现接口的类，Spring会依据实现了接口则使用JDK内置的动态代理，如果未实现接口则使用cglib -->

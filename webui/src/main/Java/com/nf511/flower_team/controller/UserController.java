@@ -1,4 +1,4 @@
-package com.nf511.flower_team.contrllor;
+package com.nf511.flower_team.controller;
 
 import com.nf511.flower_team.entity.User;
 import com.nf511.flower_team.service.UserService;
@@ -12,7 +12,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping(path = "/user")
-public class UserContrllor {
+public class UserController {
     @Autowired
     UserService userService;
 

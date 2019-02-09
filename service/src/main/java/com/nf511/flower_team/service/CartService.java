@@ -1,11 +1,14 @@
-package com.nf511.flower_team.dao;
+package com.nf511.flower_team.service;
+
 
 import com.nf511.flower_team.entity.Cart;
+import com.nf511.flower_team.entity.User;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
-public interface CartDao {
+public interface CartService {
+
     List<Cart> selectAllCart();
     Cart selectAllCartId(@Param("cartId") String cartId);
     List<Cart>selectAllCartByPage(@Param("pagelimit")int pagelimit,@Param("size")int size);

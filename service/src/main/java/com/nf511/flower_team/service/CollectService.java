@@ -1,11 +1,13 @@
-package com.nf511.flower_team.dao;
+package com.nf511.flower_team.service;
+
 
 import com.nf511.flower_team.entity.Collect;
+import com.nf511.flower_team.entity.User;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
-public interface CollectDao {
+public interface CollectService {
     List<Collect> selectAllCollect();
     Collect selectAllCollectId(@Param("collectId") String collectId);
     List<Collect>selectAllCollectByPage(@Param("pagelimit")int pagelimit,@Param("size")int size);

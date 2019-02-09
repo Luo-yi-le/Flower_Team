@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!--命名空间应该是对应接口的包名+接口名 -->
-<mapper namespace="com.nf511.flower_team.dao.flowerBranchNumberDao"><!--.dao-->
+<mapper namespace="com.nf511.flower_team.dao.FlowerBranchNumberDao"><!--.dao-->
     <!--id应该是接口中的方法，结果类型如没有配置别名则应该使用全名称-->
     <resultMap id="allFlowerBranchNumber" type="FlowerBranchNumber">
         <id column="flowerBranchNumberId" property="flowerBranchNumberId"></id>
@@ -39,12 +39,12 @@
     </delete>
 
     <!--添加-->
-    <insert id="insertFlowerBranchNumberId" parameterType="FlowerBranchNumber" useGeneratedKeys="true" keyProperty="flowerBranchNumberId">
+    <insert id="insertFlowerBranchNumber" parameterType="FlowerBranchNumber" useGeneratedKeys="true" keyProperty="flowerBranchNumberId">
         insert into flowerbranchnumber(flowerBranchNumber)
         values (#{flowerBranchNumber)
     </insert>
     <!--修改-->
-    <update id="updateFlowerBranchNumberId" parameterType="FlowerBranchNumber">
+    <update id="updateFlowerBranchNumber" parameterType="FlowerBranchNumber">
       update flowerbranchnumber set flowerBranchNumber=#{flowerBranchNumber} where flowerBranchNumberId=#{flowerBranchNumberId}
     </update>
 </mapper>

@@ -1,11 +1,11 @@
-package com.nf511.flower_team.dao;
+package com.nf511.flower_team.service;
 
 import com.nf511.flower_team.entity.Flowertype;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
-public interface FlowertypeDao {
+public interface FlowertypeService {
     List<Flowertype> selectAllFlowertype();
     Flowertype selectAllFlowertypeId(@Param("flowerTypeId") String flowerTypeId);
     List<Flowertype>selectAllFlowertypeByPage(@Param("pagelimit")int pagelimit,@Param("size")int size);
