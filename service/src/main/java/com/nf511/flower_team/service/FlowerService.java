@@ -12,7 +12,7 @@ public interface FlowerService {
     List<Flower> selectAllFlower();
     Flower selectAllFlowerId(@Param("flowerId") String flowerId);
     List<Flower>selectAllFlowerByPage(@Param("pagelimit")int pagelimit,@Param("size")int size);
-    int inserFlower(Flower flower);
+    int insertFlower(Flower flower);
     int updateFlower(Flower flower);
     int deleteFlower(@Param("flowerId") int flowerId);
     int deleteAll(@Param("flowerIds") List<Integer>items);

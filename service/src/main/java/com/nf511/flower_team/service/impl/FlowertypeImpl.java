@@ -25,8 +25,8 @@ public class FlowertypeImpl implements FlowertypeService {
         return flowertypeDao.selectAllFlowertypeByPage(pagelimit,size);
     }
 
-    public int inserFlowertype(Flowertype flowertype) {
-        return flowertypeDao.inserFlowertype(flowertype);
+    public int insertFlowertype(Flowertype flowertype) {
+        return flowertypeDao.insertFlowertype(flowertype);
     }
 
     public int updateFlowertype(Flowertype flowertype) {

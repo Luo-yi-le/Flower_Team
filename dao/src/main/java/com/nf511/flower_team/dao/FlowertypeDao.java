@@ -9,7 +9,7 @@ public interface FlowertypeDao {
     List<Flowertype> selectAllFlowertype();
     Flowertype selectAllFlowertypeId(@Param("flowerTypeId") String flowerTypeId);
     List<Flowertype>selectAllFlowertypeByPage(@Param("pagelimit")int pagelimit,@Param("size")int size);
-    int inserFlowertype(Flowertype flowertype);
+    int insertFlowertype(Flowertype flowertype);
     int updateFlowertype(Flowertype flowertype);
     int deleteFlowertype(@Param("flowerTypeId") int flowerTypeId);
     int deleteAll(@Param("flowerTypeIds") List<Integer>items);

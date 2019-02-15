@@ -36,7 +36,7 @@ public class CollectImpl implements CollectService {
         return collectDao.updateCollect(collect);
     }
 
-    public int deleteCollect(int collectId) {
+    public int deleteCollect(String  collectId) {
         return collectDao.deleteCollect(collectId);
     }
 

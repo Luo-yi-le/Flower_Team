@@ -25,8 +25,8 @@ public class FlowerImpl implements FlowerService {
         return flowerDao.selectAllFlowerByPage(pagelimit, size);
     }
 
-    public int inserFlower(Flower flower) {
-        return flowerDao.inserFlower(flower);
+    public int insertFlower(Flower flower) {
+        return flowerDao.insertFlower(flower);
     }
 
     public int updateFlower(Flower flower) {

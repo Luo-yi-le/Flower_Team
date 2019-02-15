@@ -25,8 +25,8 @@ public class FloweruseImpl implements FloweruseService {
         return floweruseDao.selectAllFloweruseByPage(pagelimit, size);
     }
 
-    public int inserFloweruse(Floweruse floweruse) {
-        return floweruseDao.inserFloweruse(floweruse);
+    public int insertFloweruse(Floweruse floweruse) {
+        return floweruseDao.insertFloweruse(floweruse);
     }
 
     public int updateFloweruse(Floweruse floweruse) {

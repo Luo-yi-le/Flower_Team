@@ -17,11 +17,13 @@
         <maven.compiler.source>1.7</maven.compiler.source>
         <maven.compiler.target>1.7</maven.compiler.target>
     </properties>
+
     <dependencies>
         <dependency>
             <groupId>com.nf511.flower_team</groupId>
             <artifactId>service</artifactId>
         </dependency>
+
         <!-- Spring MVC -->
         <dependency>
             <groupId>org.springframework</groupId>
@@ -96,10 +98,6 @@
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-log4j12</artifactId>
             <version>1.7.25</version>
-        </dependency>
-        <dependency>
-            <groupId>com.nf511.flower_team</groupId>
-            <artifactId>common</artifactId>
         </dependency>
     </dependencies>
 

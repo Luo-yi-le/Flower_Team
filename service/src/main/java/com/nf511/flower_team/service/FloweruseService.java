@@ -9,7 +9,7 @@ public interface FloweruseService {
     List<Floweruse> selectAllFloweruse();
     Floweruse selectAllFloweruseId(@Param("flowerUseId") String flowerUseId);
     List<Floweruse>selectAllFloweruseByPage(@Param("pagelimit") int pagelimit, @Param("size") int size);
-    int inserFloweruse(Floweruse floweruse);
+    int insertFloweruse(Floweruse floweruse);
     int updateFloweruse(Floweruse floweruse);
     int deleteFloweruse(@Param("flowerUseId") int flowerUseId);
     int deleteAll(@Param("flowerUseIds") List<Integer> items);

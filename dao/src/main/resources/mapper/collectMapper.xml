@@ -10,7 +10,7 @@
         <result column="userId" property="userId"></result>
     </resultMap>
     <!--查询id-->
-    <select id="selectAllCollect" resultMap="allCollect">
+    <select id="selectAllCollectId" resultMap="allCollect">
       select  * from collect where collectId=#{collectId}
     </select>
     <!--查询全部-->

@@ -2,7 +2,6 @@ package com.nf511.flower_team.service;
 
 
 import com.nf511.flower_team.entity.Address;
-import com.nf511.flower_team.entity.User;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

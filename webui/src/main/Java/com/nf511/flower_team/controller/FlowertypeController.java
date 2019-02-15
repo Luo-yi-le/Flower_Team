@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.List;
 
 @Controller
-@RequestMapping(path = "/flowertypeService")
+@RequestMapping(path = "/flowerType")
 public class FlowertypeController {
     @Autowired
     FlowertypeService flowertypeService;

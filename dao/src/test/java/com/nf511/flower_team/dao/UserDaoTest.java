@@ -8,18 +8,16 @@ import static org.junit.Assert.*;
 
 public class UserDaoTest {
 
-    UserDao userDao;
+    ApplicationContext ctx=new ClassPathXmlApplicationContext("applicationContext.xml");
+    UserDao userDao=ctx.getBean(UserDao.class);
+
     @Test
     public void selectAllUser() {
-        ApplicationContext ctx=new ClassPathXmlApplicationContext("applicationContext.xml");
-        userDao=ctx.getBean(UserDao.class);
         System.out.println(userDao.selectAllUser());
     }
 
     @Test
     public void userLogin() {
-        ApplicationContext ctx=new ClassPathXmlApplicationContext("applicationContext.xml");
-        userDao=ctx.getBean(UserDao.class);
         System.out.println(userDao.userLogin("刘琪","666666"));
     }
 }

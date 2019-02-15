@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.List;
 
 @Controller
-@RequestMapping(path = "/adderss")
+@RequestMapping(path = "/address")
 public class AddressController {
     @Autowired
     AddressService addressService;
