@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--命名空间应该是对应接口的包名+接口名 -->
+<mapper namespace="com.nf511.flower_team.dao.CartDao"><!--.dao-->
+    <!--id应该是接口中的方法，结果类型如没有配置别名则应该使用全名称-->
+
+    <resultMap id="allCart" type="Cart">
+        <id column="cartId" property="cartId"></id>
+        <result column="flowerId" property="flowerId"></result>
+        <result column="userId" property="userId"></result>
+        <result column="cartAmount" property="cartAmount"></result>
+    </resultMap>
+
+    <!--查询id-->
+    <select id="selectAllCartId" resultMap="allCart">
+      select  * from Cart where cartId=#{cartId}
+    </select>
+    <!--查询全部-->
+    <select id="selectAllCart" resultMap="allCart">
+         select * from Cart
+    </select>
+    <!--分页查询-->
+    <select id="selectAllCartByPage" resultMap="allCart">
+         select * from Cart limit #{pagelimit},#{size};
+    </select>
+
+    <!--删除-->
+    <delete id="deleteCart" parameterType="int">
+        delete from Cart where cartId=#{cartId};
+    </delete>
+
+    <!--批量删除-->
+    <delete id="deleteAll" parameterType="java.util.List">
+        delete from Cart
+        <where>
+            <if test="cartId!=null and cartId.size() gt 0">
+                cartId in
+                <foreach collection="cartIds" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+        </where>
+    </delete>
+
+    <!--添加-->
+    <insert id="insertCart" parameterType="Cart" useGeneratedKeys="true" keyProperty="cartId">
+        insert into Cart(flowerId,userId,cartAmount)
+        values (#{flowerId},#{userId},#{cartAmount})
+    </insert>
+    <!--修改-->
+    <update id="updateCart" parameterType="Cart">
+      update Cart set flowerId=#{flowerId},userId=#{userId},cartAmount=#{cartAmount} where cartId=#{cartId}
+    </update>
+</mapper>

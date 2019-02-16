@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--命名空间应该是对应接口的包名+接口名 -->
+<mapper namespace="com.nf511.flower_team.dao.ImageDao"><!--.dao-->
+    <!--id应该是接口中的方法，结果类型如没有配置别名则应该使用全名称-->
+    <resultMap id="allImage" type="Image">
+        <id column="imageId" property="imageId"></id>
+        <result column="imageName" property="imageName"></result>
+        <result column="flowerId" property="flowerId"></result>
+    </resultMap>
+
+    <!--查询id-->
+    <select id="selectAllImageId" resultMap="allImage">
+      select  * from image where imageId=#{imageId}
+    </select>
+    <!--查询全部-->
+    <select id="selectAllCart" resultMap="allImage">
+         select * from image
+    </select>
+    <!--分页查询-->
+    <select id="selectAllImageByPage" resultMap="allImage">
+         select * from image limit #{pagelimit},#{size};
+    </select>
+
+    <!--删除-->
+    <delete id="deleteImage" parameterType="int">
+        delete from image where imageId=#{imageId};
+    </delete>
+
+    <!--批量删除-->
+    <delete id="deleteAll" parameterType="java.util.List">
+        delete from image
+        <where>
+            <if test="imageId!=null and imageId.size() gt 0">
+                imageId in
+                <foreach collection="imageIds" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+        </where>
+    </delete>
+
+    <!--添加-->
+    <insert id="insertImage" parameterType="Image" useGeneratedKeys="true" keyProperty="imageId">
+        insert into image(flowerId,imageName)
+        values (#{flowerId},#{imageName})
+    </insert>
+    <!--修改-->
+    <update id="updateImage" parameterType="Image">
+      update image set imageName=#{imageName},flowerId=#{flowerId} where imageId=#{imageId}
+    </update>
+</mapper>

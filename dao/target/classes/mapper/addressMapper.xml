@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--命名空间应该是对应接口的包名+接口名 -->
+<mapper namespace="com.nf511.flower_team.dao.AddressDao"><!--.dao-->
+    <!--id应该是接口中的方法，结果类型如没有配置别名则应该使用全名称-->
+    <!--结果集-->
+    <resultMap id="allAddress" type="Address">
+        <id column="addressId" property="addressId"></id>
+        <result column="userId" property="userId"></result>
+        <result column="consigneeName" property="consigneeName"></result>
+        <result column="consigneePhone" property="consigneePhone"></result>
+        <result column="address" property="address"></result>
+        <result column="detailedAddress" property="detailedAddress"></result>
+    </resultMap>
+
+    <!--查询所有-->
+    <select id="selectAllAddress" resultMap="allAddress">
+      select  * from Address
+    </select>
+    <!--查询id-->
+    <select id="selectAddressId" resultMap="allAddress">
+      select  * from Address where addressId=#{addressId}
+    </select>
+
+    <!--分页查询-->
+    <select id="selectAllAddressByPage" resultMap="allAddress">
+         select * from Address limit #{pagelimit},#{size};
+    </select>
+
+    <!--删除-->
+    <delete id="deleteAddress" parameterType="int">
+        delete from Address where addressId=#{addressId};
+    </delete>
+
+    <!--批量删除-->
+    <delete id="deleteAll" parameterType="java.util.List">
+        delete from User
+        <where>
+            <if test="addressId!=null and addressId.size() gt 0">
+                addressId in
+                <foreach collection="addressIds" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+        </where>
+    </delete>
+
+    <!--添加-->
+    <insert id="insertAddress" parameterType="Address" useGeneratedKeys="true" keyProperty="addressId">
+        insert into address(userId,consigneeName,consigneePhone,address,detailedAddress)
+        values (#{userId},#{consigneeName},#{consigneePhone},#{address},#{detailedAddress})
+    </insert>
+    <!--修改-->
+    <update id="updateAddress" parameterType="Address">
+      update address set userId=#{userId},consigneeName=#{consigneeName},consigneePhone=#{consigneePhone},address=#{address},detailedAddress=#{detailedAddress} where addressId=#{addressId}
+    </update>
+</mapper>

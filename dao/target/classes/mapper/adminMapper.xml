@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--命名空间应该是对应接口的包名+接口名 -->
+<mapper namespace="com.nf511.flower_team.dao.AdminDao"><!--.dao-->
+    <!--id应该是接口中的方法，结果类型如没有配置别名则应该使用全名称-->
+    <resultMap id="allAdmin" type="Admin">
+        <id column="adminId" property="adminId"></id>
+        <result column="adminAccount" property="adminAccount"></result>
+        <result column="adminPassword" property="adminPassword"></result>
+    </resultMap>
+
+    <!--查询id-->
+    <select id="selectAllAdminId" resultMap="allAdmin">
+      select  * from Admin where adminId=#{adminId}
+    </select>
+    <!--查询全部-->
+    <select id="selectAllAdmin" resultMap="allAdmin">
+         select * from Admin
+    </select>
+    <!--分页查询-->
+    <select id="selectAllAdminByPage" resultMap="allAdmin">
+         select * from Admin limit #{pagelimit},#{size};
+    </select>
+
+    <!--删除-->
+    <delete id="deleteAdmin" parameterType="int">
+        delete from Admin where adminId=#{adminId};
+    </delete>
+
+    <!--批量删除-->
+    <delete id="deleteAll" parameterType="java.util.List">
+        delete from Admin
+        <where>
+            <if test="adminId!=null and adminId.size() gt 0">
+                adminId in
+                <foreach collection="adminIds" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+        </where>
+    </delete>
+
+    <!--添加-->
+    <insert id="insertAdmin" parameterType="Admin" useGeneratedKeys="true" keyProperty="adminId">
+        insert into admin(adminAccount,adminAccount)
+        values (#{adminAccount},#{adminAccount})
+    </insert>
+    <!--修改-->
+    <update id="updateAdmin" parameterType="Admin">
+      update admin set adminAccount=#{adminAccount},adminAccount=#{adminAccount} where adminId=#{adminId}
+    </update>
+</mapper>

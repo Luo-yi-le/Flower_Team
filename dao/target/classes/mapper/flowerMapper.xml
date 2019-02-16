@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--命名空间应该是对应接口的包名+接口名 -->
+<mapper namespace="com.nf511.flower_team.dao.FlowerDao"><!--.dao-->
+    <!--id应该是接口中的方法，结果类型如没有配置别名则应该使用全名称-->
+
+    <resultMap id="allFlower" type="Flower">
+        <id column="flowerId" property="flowerId"></id>
+        <result column="flowerTypeId" property="flowerTypeId"></result>
+        <result column="flowerUseId" property="flowerUseId"></result>
+        <result column="flowerBranchNumberId" property="flowerBranchNumberId"></result>
+        <result column="flowerMarketPrice" property="flowerMarketPrice"></result>
+        <result column="flowerPrice" property="flowerPrice"></result>
+        <result column="flowerInventory" property="flowerInventory"></result>
+        <result column="flowerImageName" property="flowerImageName"></result>
+        <result column="flowerName" property="flowerName"></result>
+        <result column="flowerDateTime" property="flowerDateTime"></result>
+        <result column="flowerMaterials" property="flowerMaterials"></result>
+        <result column="flowerPackaging" property="flowerPackaging"></result>
+        <result column="flowerLanguage" property="flowerLanguage"></result>
+        <result column="flowerIntroduce" property="flowerIntroduce"></result>
+        <result column="stateId" property="stateId"></result>
+    </resultMap>
+    <!--查询id-->
+    <select id="selectAllFlowerId" resultMap="allFlower">
+      select  * from flower where flowerId=#{flowerId}
+    </select>
+    <!--查询全部-->
+    <select id="selectAllFlower" resultMap="allFlower">
+         select * from flower
+    </select>
+    <!--分页查询-->
+    <select id="selectAllFlowerByPage" resultMap="allFlower">
+         select * from flower limit #{pagelimit},#{size};
+    </select>
+
+    <!--删除-->
+    <delete id="deleteFlower" parameterType="int">
+        delete from flower where flowerId=#{flowerId};
+    </delete>
+
+    <!--批量删除-->
+    <delete id="deleteAll" parameterType="java.util.List">
+        delete from flower
+        <where>
+            <if test="flowerId!=null and flowerId.size() gt 0">
+                flowerId in
+                <foreach collection="flowerIds" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+        </where>
+    </delete>
+
+    <!--添加-->
+    <insert id="insertFlower" parameterType="Flower" useGeneratedKeys="true" keyProperty="flowerId">
+        insert into flower(flowerTypeId,flowerUseId,flowerBranchNumberId,flowerMarketPrice,flowerPrice,flowerInventory,flowerImageName,flowerName,flowerDateTime,flowerMaterials,flowerPackaging,flowerLanguage,flowerIntroduce,stateId)
+        values (#{flowerTypeId},#{flowerUseId},#{flowerBranchNumberId},#{flowerMarketPrice},#{flowerPrice},#{flowerInventory},#{flowerImageName},#{flowerName},#{flowerDateTime},#{flowerMaterials},#{flowerPackaging},#{flowerLanguage},#{flowerIntroduce},#{stateId})
+    </insert>
+    <!--修改-->
+    <update id="updateFlower" parameterType="Flower">
+      update flower set flowerTypeId=#{flowerTypeId},flowerUseId=#{flowerUseId},flowerBranchNumberId=#{flowerBranchNumberId},flowerMarketPrice=#{flowerMarketPrice},flowerPrice=#{flowerPrice},flowerInventory=#{flowerInventory},flowerImageName=#{flowerImageName},flowerName=#{flowerName},flowerDateTime=#{flowerDateTime},flowerMaterials=#{flowerMaterials},flowerPackaging=#{flowerPackaging},flowerLanguage=#{flowerLanguage},flowerIntroduce=#{flowerIntroduce},stateId=#{stateId} where flowerId=#{flowerId}
+    </update>
+</mapper>

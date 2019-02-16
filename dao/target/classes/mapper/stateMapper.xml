@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--命名空间应该是对应接口的包名+接口名 -->
+<mapper namespace="com.nf511.flower_team.dao.StateDao"><!--.dao-->
+    <!--id应该是接口中的方法，结果类型如没有配置别名则应该使用全名称-->
+    <resultMap id="allState" type="State">
+        <id column="stateId" property="stateId"></id>
+        <result column="stateName" property="stateName"></result>
+    </resultMap>
+    <!--查询id-->
+    <select id="selectAllStateId" resultMap="allState">
+      select  * from state where stateId=#{stateId}
+    </select>
+    <!--查询全部-->
+    <select id="selectAllState" resultMap="allState">
+         select * from state
+    </select>
+    <!--分页查询-->
+    <select id="selectAllStateByPage" resultMap="allState">
+         select * from state limit #{pagelimit},#{size};
+    </select>
+
+    <!--删除-->
+    <delete id="deleteState" parameterType="int">
+        delete from state where stateId=#{stateId};
+    </delete>
+
+    <!--批量删除-->
+    <delete id="deleteAll" parameterType="java.util.List">
+        delete from state
+        <where>
+            <if test="stateId!=null and stateId.size() gt 0">
+                stateId in
+                <foreach collection="stateIds" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+        </where>
+    </delete>
+
+    <!--添加-->
+    <insert id="insertState" parameterType="State" useGeneratedKeys="true" keyProperty="stateId">
+        insert into state(stateName)
+        values (#{stateName})
+    </insert>
+    <!--修改-->
+    <update id="updateState" parameterType="State">
+      update state set stateName=#{stateName} where stateId=#{stateId}
+    </update>
+</mapper>
