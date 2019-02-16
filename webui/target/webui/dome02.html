@@ -7,39 +7,37 @@
 <body>
 
 <div id="login_form">
-<div>
-    用户名：<input type="text" name="userName" class="username" id="userName" placeholder="请输入你的用户名">
-</div>
-<div>
-    密&nbsp;&nbsp;&nbsp;&nbsp;码：<input type="text" class="pwd" id="userPassword" placeholder="请输入密码">
-</div>
-<button id="login" onclick="login_sub()">登陆</button>
+    <div>
+        用户名：<input type="text" name="userName" class="username" id="userName" placeholder="请输入你的用户名">
+    </div>
+    <div>
+        密&nbsp;&nbsp;&nbsp;&nbsp;码：<input type="text" class="pwd" id="userPassword" placeholder="请输入密码">
+    </div>
+    <button id="login" onclick="login_sub()">登陆</button>
 </div>
 <script src="js/vue.min.js"></script>
 <script src="js/jquery-1.12.3.min.js"></script>
 <script>
-
+    function login_sub() {
         var user = {
             "userName": $("#userName").val().trim(),
-            "userPassword": $("#userPassword").val().trim(),};
-
-                 function login_sub() {
-                    var userName = $("#userName").val().trim();
-                    var userPassword = $("#userPassword").val().trim();
-                    //清空数据
-                    $("#login_err").html("");
-                    //检查数据格式
-                    var ok = true;
-                        $.ajax({
-                            url:"http://localhost:8080/user/userLogin",
-                            type:"post",
-                            data:{"userName":userName,"userPassword":userPassword},
-                            dataType:"json",
-                            success:function(result) {
-                                alert(result+"成功")
-                            }
-                        })
-                }
+            "userPassword": $("#userPassword").val().trim(),
+        };
+        var userName = $("#userName").val().trim();
+        var userPassword = $("#userPassword").val().trim();
+        //清空数据
+        $("#login_err").html("");
+        //检查数据格式
+        $.ajax({
+            url: "http://localhost:8080/user/userLogin",
+            type: "post",
+            data: JSON.stringify(user),
+            dataType: "json",
+            success: function (result) {
+                alert(result + "成功")
+            }
+        })
+    }
 </script>
 </body>
 
